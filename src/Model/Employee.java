@@ -90,18 +90,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "EmployeeEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", positionId=" + positionId +
-                ", password='" + password + '\'' +
-                ", login='" + login + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return String.format("%s %c. %c.", lastName, firstName.charAt(0), patronymic.charAt(0));
     }
 
     @Override

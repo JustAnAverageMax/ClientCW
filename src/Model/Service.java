@@ -57,13 +57,7 @@ public class Service{
 
     @Override
     public String toString() {
-        return "Service{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", groupId=" + groupId +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                '}';
+        return String.format("%s. Цена: %d руб.", getName(), getPrice());
     }
 
     @Override

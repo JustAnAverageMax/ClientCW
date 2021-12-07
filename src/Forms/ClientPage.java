@@ -6,14 +6,18 @@ import Model.Client;
 import Model.Message;
 import Model.Visit;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 public class ClientPage {
     public ClientPage(Client client) {
@@ -32,12 +36,14 @@ public class ClientPage {
                     Message request = new Message("GetClientVisits", params);
                     Gson gson = new Gson();
 
-                    handler.writeLine(gson.toJson(request, Message.class));
+                    handler.writeLine(gson.toJson(request));
                     String response = handler.readLine();
 
-                    Vector<Visit> visits = gson.fromJson(response, Vector.class);
 
-                    ClientMain.changePanel(new ClientVisits(visits).clientVisitsPanel);
+
+                    Visit[] visits = gson.fromJson(response, Visit[].class);
+
+                    ClientMain.changePanel(new ClientVisits(visits, client).clientVisitsPanel);
 
 
 
@@ -52,10 +58,10 @@ public class ClientPage {
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                ClientMain.changePanel(new CreateVisitPage(client).createVisitPanel);
             }
         };
-        showVisitsButton.addActionListener(listener);
+        //showVisitsButton.addActionListener(listener);
         makeVisit.addActionListener(listener);
     }
 

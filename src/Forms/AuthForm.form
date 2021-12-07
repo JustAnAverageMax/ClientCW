@@ -27,6 +27,7 @@
         </constraints>
         <properties>
           <background color="-3880919"/>
+          <text value="bobothesexybear"/>
         </properties>
       </component>
       <component id="48150" class="javax.swing.JPasswordField" binding="passwordField">
@@ -37,6 +38,7 @@
         </constraints>
         <properties>
           <background color="-3880919"/>
+          <text value="password"/>
         </properties>
       </component>
       <component id="7dca3" class="javax.swing.JLabel">

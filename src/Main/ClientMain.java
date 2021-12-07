@@ -14,7 +14,7 @@ public class ClientMain {
     public static void changePanel(JPanel panel){
         frame.setContentPane(panel);
         frame.pack();
-        frame.setSize(1200, 600);
+        frame.setSize(600, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
