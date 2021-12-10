@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Collection;
+
 public class Client{
     private int id;
     private String firstName;
@@ -9,6 +11,16 @@ public class Client{
     private String phoneNumber;
     private String email;
     private String address;
+    private Collection<Visit> visits;
+    private int visitsCount;
+
+    public int getVisitsCount() {
+        return visitsCount;
+    }
+
+    public void setVisitsCount(int visitsCount) {
+        this.visitsCount = visitsCount;
+    }
 
     public int getId() {
         return id;
@@ -83,16 +95,7 @@ public class Client{
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return String.format("%s %s (%s). Количество запланированных посещений - %d", firstName, lastName, login, visitsCount);
     }
 
     @Override
@@ -114,5 +117,13 @@ public class Client{
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
+    }
+
+    public Collection<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisitsById(Collection<Visit> visits) {
+        this.visits = visits;
     }
 }

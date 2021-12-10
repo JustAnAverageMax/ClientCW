@@ -21,7 +21,7 @@ public class StartPage{
         signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClientMain.changePanel(new AuthForm().authPanel);
+                ClientMain.changePanel(new SignInRole().signInRolePanel);
             }
         });
     }

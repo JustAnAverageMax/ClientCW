@@ -2,6 +2,7 @@ package Forms;
 
 import Main.ClientMain;
 import Main.ConnectionHandler;
+import Model.Admin;
 import Model.Client;
 import Model.Message;
 import com.google.gson.Gson;
@@ -19,8 +20,9 @@ public class AuthForm {
     private JPasswordField passwordField;
     private JButton signinbutton;
     private JLabel errorLabel;
+    private JButton backButton;
 
-    public AuthForm() {
+    public AuthForm(String role) {
         signinbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,9 +33,12 @@ public class AuthForm {
                         put("Password", password);
                     }
                 };
+
                 Gson gson = new Gson();
+
                 String response = null;
-                Message request = new Message("AuthorizeClient", params);
+                String command = "Auth" + role;
+                Message request = new Message(command, params);
                 try(ConnectionHandler handler = new ConnectionHandler(ClientMain.ip, ClientMain.port)){
                     handler.writeLine(gson.toJson(request));
                     response = handler.readLine();
@@ -46,16 +51,28 @@ public class AuthForm {
                 } else {
                     try (ConnectionHandler handler = new ConnectionHandler(ClientMain.ip, ClientMain.port)) {
                         params.put("ID", response);
-                        request = new Message("GetClientByID", params);
+                        request = new Message("Get" + role + "ByID", params);
                         handler.writeLine(gson.toJson(request));
-
-                        Client client = gson.fromJson(handler.readLine(), Client.class);
-                        ClientMain.changePanel(new ClientPage(client).clientPagePanel);
+                        switch (role) {
+                            case "Client":
+                                Client client = gson.fromJson(handler.readLine(), Client.class);
+                                ClientMain.changePanel(new ClientPage(client).clientPagePanel);
+                                break;
+                            case "Admin":
+                                Admin admin = gson.fromJson(handler.readLine(), Admin.class);
+                                ClientMain.changePanel(new AdminPage(admin).adminPagePanel);
+                        }
                     }
                     catch(IOException ex){
                         ex.printStackTrace();
                     }
                 }
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientMain.changePanel(new StartPage().startPagePanel);
             }
         });
     }

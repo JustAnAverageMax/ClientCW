@@ -63,6 +63,18 @@ public class ClientPage {
         };
         //showVisitsButton.addActionListener(listener);
         makeVisit.addActionListener(listener);
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientMain.changePanel(new AuthForm("Client").authPanel);
+            }
+        });
+        getAllServices.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientMain.changePanel(new ServicesForm(client).servicesFormPanel);
+            }
+        });
     }
 
     public JPanel clientPagePanel;
@@ -71,4 +83,6 @@ public class ClientPage {
     private JLabel clientLogin;
     private JButton showVisitsButton;
     private JButton makeVisit;
+    private JButton exitButton;
+    private JButton getAllServices;
 }

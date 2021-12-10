@@ -25,6 +25,7 @@ public class Registration {
     private JTextField emailField;
     private JTextField addressField;
     private JButton registrationButton;
+    private JButton backButton;
 
     public Registration() {
         registrationButton.addActionListener(new ActionListener() {
@@ -60,6 +61,12 @@ public class Registration {
                 }catch (IOException ex){
                     ex.printStackTrace();
                 }
+            }
+        });
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientMain.changePanel(new StartPage().startPagePanel);
             }
         });
     }

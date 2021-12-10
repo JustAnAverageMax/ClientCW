@@ -1,9 +1,30 @@
 package Model;
 
+import java.util.Collection;
+
 public class Position{
     private int id;
     private String name;
     private int groupId;
+
+    private Collection<Employee> employees;
+    private ServiceGroup serviceGroup;
+
+    public Collection<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Collection<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public ServiceGroup getServiceGroup() {
+        return serviceGroup;
+    }
+
+    public void setServiceGroup(ServiceGroup serviceGroup) {
+        this.serviceGroup = serviceGroup;
+    }
 
     public int getId() {
         return id;

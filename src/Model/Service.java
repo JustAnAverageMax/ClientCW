@@ -1,11 +1,22 @@
 package Model;
 
+import java.util.Collection;
+
 public class Service{
     private int id;
     private String name;
     private Integer groupId;
     private int price;
     private String description;
+
+    private ServiceGroup serviceGroup;
+    public ServiceGroup getServiceGroup() {
+        return serviceGroup;
+    }
+
+    public void setServiceGroup(ServiceGroup serviceGroup) {
+        this.serviceGroup = serviceGroup;
+    }
 
     public int getId() {
         return id;

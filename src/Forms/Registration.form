@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Forms.Registration">
-  <grid id="27dc6" binding="registrationPanel" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="registrationPanel" layout-manager="GridLayoutManager" row-count="9" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="670" height="400"/>
@@ -158,10 +158,20 @@
           <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-9388800"/>
-          <foreground color="-3880919"/>
+          <background color="-16711932"/>
+          <foreground color="-4518912"/>
           <hideActionText value="false"/>
           <text value="Регистрация"/>
+        </properties>
+      </component>
+      <component id="d4c25" class="javax.swing.JButton" binding="backButton">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16711932"/>
+          <foreground color="-4518912"/>
+          <text value="Назад"/>
         </properties>
       </component>
     </children>

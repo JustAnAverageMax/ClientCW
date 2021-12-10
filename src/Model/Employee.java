@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Collection;
+
 public class Employee {
     private int id;
     private String firstName;
@@ -11,6 +13,18 @@ public class Employee {
     private String phoneNumber;
     private String email;
     private String address;
+    private int visitsCount;
+
+    public int getVisitsCount() {
+        return visitsCount;
+    }
+
+    public void setVisitsCount(int visitsCount) {
+        this.visitsCount = visitsCount;
+    }
+
+    private Position position;
+    private Collection<Visit> visits;
 
     public int getId() {
         return id;
@@ -92,6 +106,9 @@ public class Employee {
     public String toString() {
         return String.format("%s %c. %c.", lastName, firstName.charAt(0), patronymic.charAt(0));
     }
+    public String toString(char a){
+        return String.format("%s %c. %c. Количество обслуживаемых посещений на данный момент - %d", lastName, firstName.charAt(0), patronymic.charAt(0), visitsCount);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,5 +131,21 @@ public class Employee {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Collection<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Collection<Visit> visits) {
+        this.visits = visits;
     }
 }

@@ -1,8 +1,29 @@
 package Model;
 
+import java.util.Collection;
+
 public class ServiceGroup{
     private int id;
     private String name;
+    
+    private Collection<Position> positions;
+    private Collection<Service> services;
+
+    public Collection<Position> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Collection<Position> positions) {
+        this.positions = positions;
+    }
+
+    public Collection<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(Collection<Service> services) {
+        this.services = services;
+    }
 
     public int getId() {
         return id;
@@ -23,10 +44,7 @@ public class ServiceGroup{
 
     @Override
     public String toString() {
-        return "ServiceGroup{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return name;
     }
 
     @Override

@@ -11,6 +11,36 @@ public class Visit{
     private Date date;
     private Time time;
 
+    private Client client;
+    private Employee employee;
+    private Service service;
+
+
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
     public int getId() {
         return id;
     }
@@ -67,14 +97,13 @@ public class Visit{
 
     @Override
     public String toString() {
-        return "Visit{" +
-                "id=" + id +
-                ", clientId=" + clientId +
-                ", serviceId=" + serviceId +
-                ", employeeId=" + employeeId +
-                ", date=" + date +
-                ", time=" + time +
-                '}';
+        return String.format("%s  %s %c. %c  %s  %s",
+                service.getName(),
+                employee.getLastName(),
+                employee.getFirstName().charAt(0),
+                employee.getPatronymic().charAt(0),
+                date.toString(),
+                time.toString());
     }
 
     @Override

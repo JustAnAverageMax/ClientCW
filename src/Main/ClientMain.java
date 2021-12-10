@@ -1,11 +1,7 @@
 package Main;
-
 import Forms.StartPage;
-import Model.Message;
-import com.google.gson.Gson;
-
 import javax.swing.*;
-import java.io.IOException;
+
 
 public class ClientMain {
     public static final int port = 8080;
