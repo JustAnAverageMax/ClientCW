@@ -47,7 +47,7 @@
         <properties>
           <background color="-15592490"/>
           <foreground color="-3880919"/>
-          <text value="Показать статистику по текущим посещениям"/>
+          <text value="Управление услугами"/>
         </properties>
       </component>
       <component id="5c233" class="javax.swing.JButton" binding="createAdminButton">

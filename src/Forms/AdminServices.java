@@ -27,6 +27,8 @@ public class AdminServices {
     private JButton backButton;
     private JTextPane serviceDescription;
     private JButton changeServiceDescription;
+    private JButton deleteService;
+    private JButton addService;
 
     private Service selectedService;
     private ServiceGroup selectedServiceGroup;
@@ -143,7 +145,7 @@ public class AdminServices {
         serviceGroupCB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                selectedServiceGroup = (ServiceGroup) serviceGroupCB.getSelectedItem();
             }
         });
         changeServiceDescription.addActionListener(new ActionListener() {
@@ -152,6 +154,42 @@ public class AdminServices {
                 if(selectedService!=null){
                     selectedService.setDescription(serviceDescription.getText());
                     updateService(selectedService);
+                }
+            }
+        });
+        deleteService.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(selectedService!=null){
+                    params.put("Service", gson.toJson(selectedService));
+                    Message request = new Message("RemoveService", params);
+                    try(ConnectionHandler handler = new ConnectionHandler(ClientMain.ip, ClientMain.port)){
+                        handler.writeLine(gson.toJson(request));
+                        servicesCB.removeItem(selectedService);
+                    }catch(IOException ex){
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+        addService.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Service createdService = new Service();
+                createdService.setName(newNameTF.getText());
+                createdService.setPrice(Integer.parseInt( servicePrice.getText()));
+                if(selectedServiceGroup!=null) {
+                    createdService.setServiceGroup(selectedServiceGroup);
+                    createdService.setGroupId(selectedServiceGroup.getId());
+                }
+                createdService.setDescription(serviceDescription.getText());
+                params.put("addedServiceModel", gson.toJson(createdService));
+                Message request = new Message("AddService", params);
+                try (ConnectionHandler handler = new ConnectionHandler(ClientMain.ip, ClientMain.port)){
+                    handler.writeLine(gson.toJson(request));
+                    servicesCB.addItem(createdService);
+                }catch(IOException ex){
+                    ex.printStackTrace();
                 }
             }
         });
